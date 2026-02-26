@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 30% 5%;
+    --foreground: 220 20% 97%;
+    --card: 220 25% 8%;
+    --card-foreground: 220 20% 97%;
+    --popover: 220 25% 8%;
+    --popover-foreground: 220 20% 97%;
+    --primary: 45 85% 62%;
+    --primary-foreground: 220 30% 5%;
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 220 20% 97%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 45 85% 62%;
+    --accent-foreground: 220 30% 5%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 45 85% 62%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  body {
+    @apply bg-[#0B0F17] text-[#F7F8FB] antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Typography */
+.font-display {
+  font-family: 'Sora', sans-serif;
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Headline styles */
+.headline-xl {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.75rem, 5vw, 5.25rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.headline-lg {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Micro label style */
+.micro-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Section index */
+.section-index {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1;
+  color: rgba(242, 201, 76, 0.15);
+}
+
+/* Corner markers */
+.corner-marker {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: rgba(242, 201, 76, 0.85);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.corner-marker-tl {
+  top: clamp(14px, 2.2vw, 28px);
+  left: clamp(14px, 2.2vw, 28px);
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.corner-marker-tr {
+  top: clamp(14px, 2.2vw, 28px);
+  right: clamp(14px, 2.2vw, 28px);
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+
+.corner-marker-bl {
+  bottom: clamp(14px, 2.2vw, 28px);
+  left: clamp(14px, 2.2vw, 28px);
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+}
+
+.corner-marker-br {
+  bottom: clamp(14px, 2.2vw, 28px);
+  right: clamp(14px, 2.2vw, 28px);
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+/* Grain overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Accent underline */
+.accent-underline {
+  width: 80px;
+  height: 3px;
+  background-color: #F2C94C;
+  margin-top: 1rem;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3 bg-[#F2C94C] text-[#0B0F17] font-semibold text-sm tracking-wide transition-all duration-200;
+}
+
+.btn-primary:hover {
+  @apply bg-[#e5bc3f] scale-[1.02];
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center px-6 py-3 border border-[#F2C94C] text-[#F2C94C] font-semibold text-sm tracking-wide transition-all duration-200;
+}
+
+.btn-outline:hover {
+  @apply bg-[#F2C94C] text-[#0B0F17];
+}
+
+/* Panel styles */
+.panel-dark {
+  background-color: rgba(11, 15, 23, 0.95);
+  backdrop-filter: blur(8px);
+}
+
+/* Gradient overlay */
+.gradient-overlay-left {
+  background: linear-gradient(90deg, rgba(11,15,23,0.92) 0%, rgba(11,15,23,0.55) 55%, rgba(11,15,23,0.25) 100%);
+}
+
+.gradient-overlay-right {
+  background: linear-gradient(270deg, rgba(11,15,23,0.92) 0%, rgba(11,15,23,0.55) 55%, rgba(11,15,23,0.25) 100%);
+}
+
+/* Light section background */
+.bg-light {
+  background-color: #F6F7FB;
+}
+
+/* Form styles */
+input, textarea {
+  @apply bg-[#0B0F17] border border-[rgba(247,248,251,0.15)] text-[#F7F8FB] px-4 py-3 w-full transition-all duration-200;
+}
+
+input:focus, textarea:focus {
+  @apply outline-none border-[#F2C94C];
+}
+
+input::placeholder, textarea::placeholder {
+  @apply text-[#A6A9B6];
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a2030;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3050;
+}
+
+/* Pin spacer fix */
+.pin-spacer {
+  pointer-events: none !important;
+}
+
+.pin-spacer > * {
+  pointer-events: auto !important;
+}
